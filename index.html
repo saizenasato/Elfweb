@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Binayak's Elf Request</title>
+
+<style>
+
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    color: #f5f1df;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            #285b38 0,
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 10% 80%,
+            #173923 0,
+            transparent 30%
+        ),
+        linear-gradient(
+            145deg,
+            #030b07,
+            #0b2415 55%,
+            #020a05
+        );
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   FIREFLIES
+========================================= */
+
+.firefly {
+    position: fixed;
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: #f6e59a;
+
+    box-shadow:
+        0 0 15px 5px #f6e59a88;
+
+    animation:
+        float 6s infinite ease-in-out;
+
+    pointer-events: none;
+}
+
+.f1 {
+    left: 10%;
+    top: 25%;
+}
+
+.f2 {
+    left: 25%;
+    top: 70%;
+    animation-delay: 1s;
+}
+
+.f3 {
+    left: 80%;
+    top: 20%;
+    animation-delay: 2s;
+}
+
+.f4 {
+    left: 90%;
+    top: 65%;
+    animation-delay: 3s;
+}
+
+.f5 {
+    left: 55%;
+    top: 85%;
+    animation-delay: 4s;
+}
+
+@keyframes float {
+
+    50% {
+        transform: translate(20px, -30px);
+        opacity: .4;
+    }
+
+}
+
+
+/* =========================================
+   MAIN CONTAINER
+========================================= */
+
+.container {
+    width: 92%;
+    max-width: 850px;
+
+    margin: auto;
+
+    padding:
+        35px
+        0
+        80px;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+header {
+    text-align: center;
+
+    padding:
+        25px
+        10px;
+}
+
+.rune {
+    color: #f3d48a;
+
+    letter-spacing: 4px;
+
+    font-size: 13px;
+
+    text-transform: uppercase;
+}
+
+h1 {
+    font-size:
+        clamp(
+            45px,
+            12vw,
+            80px
+        );
+
+    margin:
+        12px
+        0
+        5px;
+
+    line-height: .95;
+}
+
+.name {
+    color: #f3d48a;
+
+    font-size: 23px;
+
+    margin-top: 12px;
+}
+
+.subtitle {
+    color: #8bd18e;
+
+    font-style: italic;
+
+    margin-top: 8px;
+
+    font-size: 17px;
+}
+
+.divider {
+    width: 180px;
+
+    height: 1px;
+
+    margin:
+        25px
+        auto;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #f3d48a,
+            transparent
+        );
+}
+
+
+/* =========================================
+   CARDS
+========================================= */
+
+.card {
+    background:
+        rgba(
+            15,
+            40,
+            26,
+            .85
+        );
+
+    border:
+        1px solid
+        #a8d18b33;
+
+    border-radius: 24px;
+
+    padding: 27px;
+
+    margin: 18px 0;
+
+    box-shadow:
+        0 20px 60px #0008;
+
+    backdrop-filter:
+        blur(8px);
+}
+
+h2 {
+    color: #f3d48a;
+
+    margin-top: 0;
+
+    font-size: 25px;
+}
+
+
+/* =========================================
+   PROFILE
+========================================= */
+
+.grid {
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1fr;
+
+    gap: 14px;
+}
+
+.info {
+    background:
+        #ffffff08;
+
+    padding: 17px;
+
+    border-radius: 15px;
+
+    border:
+        1px solid
+        #ffffff08;
+}
+
+.info b {
+    display: block;
+
+    color: #8bd18e;
+
+    margin-bottom: 6px;
+}
+
+
+/* =========================================
+   QUALIFICATIONS
+========================================= */
+
+ul {
+    padding-left: 22px;
+}
+
+li {
+    margin:
+        10px
+        0;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   QUOTE
+========================================= */
+
+.quote {
+    text-align: center;
+
+    font-size: 21px;
+
+    line-height: 1.6;
+
+    color: #eee4c3;
+}
+
+.quote small {
+    display: block;
+
+    color: #829184;
+
+    font-size: 13px;
+
+    margin-top: 8px;
+}
+
+
+/* =========================================
+   FINAL QUESTION
+========================================= */
+
+.interview {
+    text-align: center;
+}
+
+
+/* =========================================
+   BUTTON AREA
+========================================= */
+
+.button-area {
+    position: relative;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 14px;
+
+    min-height: 110px;
+
+    margin-top: 25px;
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+#accept,
+#reject {
+    border-radius: 50px;
+
+    padding:
+        15px
+        27px;
+
+    font-family: inherit;
+
+    font-weight: bold;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    user-select: none;
+
+    -webkit-user-select: none;
+
+    touch-action: manipulation;
+}
+
+
+/* =========================================
+   ACCEPT BUTTON
+========================================= */
+
+#accept {
+    position: relative;
+
+    z-index: 10;
+
+    border: none;
+
+    background:
+        linear-gradient(
+            135deg,
+            #b9e7a0,
+            #70b879
+        );
+
+    color: #09200e;
+
+    box-shadow:
+        0 8px 25px
+        #78c77a55;
+
+    transition:
+        transform .2s,
+        box-shadow .2s;
+}
+
+#accept:hover {
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 12px 30px
+        #78c77a88;
+}
+
+
+/* =========================================
+   REJECT BUTTON
+========================================= */
+
+#reject {
+    position: relative;
+
+    z-index: 9999;
+
+    border:
+        1px solid
+        #d77a7266;
+
+    background:
+        #35201e;
+
+    color:
+        #f5c7c0;
+
+    transition:
+        left .25s
+        cubic-bezier(.2, 1.5, .5, 1),
+
+        top .25s
+        cubic-bezier(.2, 1.5, .5, 1),
+
+        transform .25s;
+}
+
+
+/* =========================================
+   REJECT MESSAGE
+========================================= */
+
+#message {
+    min-height: 25px;
+
+    margin-top: 10px;
+
+    color: #9fd69b;
+
+    font-size: 14px;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+    text-align: center;
+
+    color: #718272;
+
+    font-size: 12px;
+
+    margin-top: 30px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   ACCEPT POPUP
+========================================= */
+
+#popup {
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 10000;
+
+    background:
+        #020804dd;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 25px;
+}
+
+.popup-box {
+    width: 100%;
+
+    max-width: 500px;
+
+    background:
+        #10291a;
+
+    border:
+        1px solid
+        #b8d99c55;
+
+    border-radius: 28px;
+
+    padding: 35px;
+
+    text-align: center;
+
+    box-shadow:
+        0 25px 90px #000;
+}
+
+.popup-box .emoji {
+    font-size: 55px;
+
+    margin-bottom: 10px;
+}
+
+.popup-box h2 {
+    font-size: 30px;
+
+    color: #f3d48a;
+}
+
+.popup-box p {
+    line-height: 1.6;
+
+    font-size: 18px;
+}
+
+.close-button {
+    border: none;
+
+    border-radius: 30px;
+
+    padding:
+        13px
+        25px;
+
+    background:
+        #f3d48a;
+
+    color:
+        #211b0b;
+
+    font-family: inherit;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    font-size: 15px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .container {
+        width: 94%;
+
+        padding-top: 20px;
+    }
+
+    .grid {
+        grid-template-columns:
+            1fr;
+    }
+
+    .card {
+        padding: 22px;
+    }
+
+    h1 {
+        font-size: 54px;
+    }
+
+    .popup-box {
+        padding:
+            30px
+            22px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     FIREFLIES
+========================================= -->
+
+<div class="firefly f1"></div>
+<div class="firefly f2"></div>
+<div class="firefly f3"></div>
+<div class="firefly f4"></div>
+<div class="firefly f5"></div>
+
+
+<div class="container">
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<header>
+
+    <div class="rune">
+        ✦ A Woodland Request ✦
+    </div>
+
+    <h1>
+        ELF REQUEST
+    </h1>
+
+    <div class="name">
+        From: Binayak
+    </div>
+
+    <div class="subtitle">
+        A special request for Nimisha ✨
+    </div>
+
+    <div class="divider"></div>
+
+</header>
+
+
+<!-- =========================================
+     REQUEST PROFILE
+========================================= -->
+
+<section class="card">
+
+    <h2>
+        🌿 Request Details
+    </h2>
+
+    <div class="grid">
+
+        <div class="info">
+            <b>Applicant</b>
+            Binayak
+        </div>
+
+        <div class="info">
+            <b>Requesting</b>
+            Nimisha ✨
+        </div>
+
+        <div class="info">
+            <b>Requested Role</b>
+            Nimisha's Personal Elf
+        </div>
+
+        <div class="info">
+            <b>Availability</b>
+            Whenever Nimisha needs me
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     QUALIFICATIONS
+========================================= -->
+
+<section class="card">
+
+    <h2>
+        🍃 Why Binayak?
+    </h2>
+
+    <ul>
+
+        <li>
+            Experienced in dealing with chaotic fairies.
+        </li>
+
+        <li>
+            Excellent reaction-emoji compatibility.
+        </li>
+
+        <li>
+            Professional good-vibes provider.
+        </li>
+
+        <li>
+            Can survive questionable fairy decisions.
+        </li>
+
+        <li>
+            Highly motivated to become Nimisha's elf.
+        </li>
+
+        <li>
+            Will protect the sacred woodland from boredom.
+        </li>
+
+    </ul>
+
+</section>
+
+
+<!-- =========================================
+     QUOTE
+========================================= -->
+
+<section class="card">
+
+    <div class="quote">
+
+        "I saw a fairy and immediately submitted my request."
+
+        <small>
+            — Binayak, probably
+        </small>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     FINAL REQUEST
+========================================= -->
+
+<section class="card interview">
+
+    <h2>
+        🌙 One Final Question
+    </h2>
+
+    <p>
+
+        Nimisha, would you accept
+        Binayak's request?
+
+        <br><br>
+
+        <span style="color:#8bd18e">
+            The woodland awaits your answer. 🌿
+        </span>
+
+    </p>
+
+
+    <div
+        class="button-area"
+        id="buttonArea"
+    >
+
+        <button
+            id="accept"
+            type="button"
+        >
+            ✨ Accept
+        </button>
+
+
+        <button
+            id="reject"
+            type="button"
+        >
+            🍂 Reject
+        </button>
+
+    </div>
+
+
+    <div id="message"></div>
+
+</section>
+
+
+<footer>
+
+    Made under the moonlight 🌙
+
+    <br>
+
+    A request from Binayak to Nimisha.
+
+</footer>
+
+
+</div>
+
+
+<!-- =========================================
+     ACCEPT POPUP
+========================================= -->
+
+<div id="popup">
+
+    <div class="popup-box">
+
+        <div class="emoji">
+            🧝‍♂️🌲✨
+        </div>
+
+
+        <h2>
+            Thank You! 💚
+        </h2>
+
+
+        <p>
+            Thank you for accepting my request,
+            Nimisha!
+        </p>
+
+
+        <p style="color:#8bd18e">
+
+            Your request has been accepted. 🌿
+
+            <br><br>
+
+            Your elf, Binayak,
+            is ready to serve you. 🧝‍♂️✨
+
+        </p>
+
+
+        <button
+            class="close-button"
+            type="button"
+            onclick="closePopup()"
+        >
+            Return to the Forest
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================================
+   ELEMENTS
+========================================= */
+
+const reject =
+    document.getElementById("reject");
+
+const accept =
+    document.getElementById("accept");
+
+const message =
+    document.getElementById("message");
+
+const popup =
+    document.getElementById("popup");
+
+
+/* =========================================
+   ESCAPE STATE
+========================================= */
+
+let lastEscape = 0;
+
+let rejectInteraction = false;
+
+
+/* =========================================
+   RUN AWAY
+========================================= */
+
+function runAway(event) {
+
+    /*
+       Stop the original touch/click
+       from travelling through the page.
+    */
+
+    if (event) {
+
+        event.preventDefault();
+
+        event.stopPropagation();
+
+    }
+
+
+    rejectInteraction = true;
+
+
+    const now = Date.now();
+
+
+    /*
+       Prevent duplicate pointer/click events.
+    */
+
+    if (
+        now - lastEscape < 150
+    ) {
+        return;
+    }
+
+
+    lastEscape = now;
+
+
+    /* -------------------------------------
+       VISIBLE VIEWPORT
+    ------------------------------------- */
+
+    const viewportWidth =
+        document.documentElement.clientWidth;
+
+    const viewportHeight =
+        document.documentElement.clientHeight;
+
+
+    /* -------------------------------------
+       BUTTON SIZE
+    ------------------------------------- */
+
+    const buttonWidth =
+        reject.offsetWidth;
+
+    const buttonHeight =
+        reject.offsetHeight;
+
+
+    const padding = 20;
+
+
+    /* -------------------------------------
+       MAXIMUM SAFE POSITION
+    ------------------------------------- */
+
+    const maxX =
+        Math.max(
+            padding,
+            viewportWidth -
+            buttonWidth -
+            padding
+        );
+
+
+    const maxY =
+        Math.max(
+            padding,
+            viewportHeight -
+            buttonHeight -
+            padding
+        );
+
+
+    /* -------------------------------------
+       OLD POSITION
+    ------------------------------------- */
+
+    const oldX =
+        parseFloat(
+            reject.style.left
+        );
+
+    const oldY =
+        parseFloat(
+            reject.style.top
+        );
+
+
+    let randomX = padding;
+
+    let randomY = padding;
+
+
+    /* -------------------------------------
+       FIND A DIFFERENT POSITION
+    ------------------------------------- */
+
+    for (
+        let i = 0;
+        i < 15;
+        i++
+    ) {
+
+        randomX =
+            padding +
+            Math.random() *
+            Math.max(
+                0,
+                maxX - padding
+            );
+
+
+        randomY =
+            padding +
+            Math.random() *
+            Math.max(
+                0,
+                maxY - padding
+            );
+
+
+        if (
+            !Number.isFinite(oldX) ||
+            !Number.isFinite(oldY)
+        ) {
+
+            break;
+
+        }
+
+
+        const distance =
+            Math.hypot(
+                randomX - oldX,
+                randomY - oldY
+            );
+
+
+        if (
+            distance >
+            Math.min(
+                viewportWidth,
+                viewportHeight
+            ) * 0.25
+        ) {
+
+            break;
+
+        }
+
+    }
+
+
+    /* -------------------------------------
+       MOVE REJECT
+    ------------------------------------- */
+
+    reject.style.position =
+        "fixed";
+
+    reject.style.left =
+        randomX + "px";
+
+    reject.style.top =
+        randomY + "px";
+
+
+    /* -------------------------------------
+       RANDOM ROTATION
+    ------------------------------------- */
+
+    const rotation =
+        Math.random() * 24 - 12;
+
+    reject.style.transform =
+        `rotate(${rotation}deg)`;
+
+
+    /* -------------------------------------
+       RANDOM MESSAGE
+    ------------------------------------- */
+
+    const messages = [
+
+        "🍃 NOPE!",
+
+        "🌲 Catch me!",
+
+        "🧝 Too fast!",
+
+        "✨ Fairy magic!",
+
+        "🍂 Try again!",
+
+        "🌿 Almost!",
+
+        "😂 Nice try!",
+
+        "🧚 Nimisha protected me!",
+
+        "🏃💨 BYE!",
+
+        "🌳 I'm over here!",
+
+        "🍄 You can't catch me!",
+
+        "✨ Elf magic activated!",
+
+        "🌲 The forest says NO!",
+
+        "🧝 Not today!"
+
+    ];
+
+
+    message.textContent =
+        messages[
+            Math.floor(
+                Math.random() *
+                messages.length
+            )
+        ];
+
+
+    /*
+       Keep Android's delayed/synthetic
+       click from activating Accept.
+    */
+
+    setTimeout(
+        function() {
+
+            rejectInteraction = false;
+
+        },
+        500
+    );
+
+}
+
+
+/* =========================================
+   REJECT — TOUCH / POINTER
+========================================= */
+
+reject.addEventListener(
+    "pointerdown",
+    runAway,
+    true
+);
+
+
+/* =========================================
+   REJECT — DESKTOP MOUSE
+========================================= */
+
+reject.addEventListener(
+    "mouseenter",
+    function(event) {
+
+        runAway(event);
+
+    }
+);
+
+
+/* =========================================
+   REJECT — CLICK
+========================================= */
+
+reject.addEventListener(
+    "click",
+    function(event) {
+
+        event.preventDefault();
+
+        event.stopPropagation();
+
+        rejectInteraction = true;
+
+
+        const now = Date.now();
+
+
+        if (
+            now - lastEscape >= 150
+        ) {
+
+            runAway(event);
+
+        }
+
+
+        setTimeout(
+            function() {
+
+                rejectInteraction = false;
+
+            },
+            500
+        );
+
+    },
+    true
+);
+
+
+/* =========================================
+   ACCEPT
+========================================= */
+
+accept.addEventListener(
+    "click",
+    function(event) {
+
+        /*
+           Ignore accidental clicks caused
+           by the Reject button escaping.
+        */
+
+        if (
+            rejectInteraction ||
+            Date.now() - lastEscape < 500
+        ) {
+
+            event.preventDefault();
+
+            event.stopPropagation();
+
+            return;
+
+        }
+
+
+        /*
+           Genuine Accept action.
+        */
+
+        popup.style.display =
+            "flex";
+
+    }
+);
+
+
+/* =========================================
+   ACCEPT POINTER PROTECTION
+========================================= */
+
+accept.addEventListener(
+    "pointerdown",
+    function(event) {
+
+        if (
+            rejectInteraction ||
+            Date.now() - lastEscape < 500
+        ) {
+
+            event.preventDefault();
+
+            event.stopPropagation();
+
+        }
+
+    },
+    true
+);
+
+
+/* =========================================
+   GLOBAL CLICK PROTECTION
+========================================= */
+
+document.addEventListener(
+    "click",
+    function(event) {
+
+        if (
+            rejectInteraction &&
+            event.target === accept
+        ) {
+
+            event.preventDefault();
+
+            event.stopPropagation();
+
+        }
+
+    },
+    true
+);
+
+
+/* =========================================
+   CLOSE POPUP
+========================================= */
+
+function closePopup() {
+
+    popup.style.display =
+        "none";
+
+}
+
+
+/* =========================================
+   KEEP REJECT ON SCREEN
+========================================= */
+
+window.addEventListener(
+    "resize",
+    function() {
+
+        if (
+            reject.style.position !== "fixed"
+        ) {
+
+            return;
+
+        }
+
+
+        const width =
+            reject.offsetWidth;
+
+        const height =
+            reject.offsetHeight;
+
+
+        let left =
+            parseFloat(
+                reject.style.left
+            );
+
+        let top =
+            parseFloat(
+                reject.style.top
+            );
+
+
+        if (
+            Number.isNaN(left)
+        ) {
+
+            left = 20;
+
+        }
+
+
+        if (
+            Number.isNaN(top)
+        ) {
+
+            top = 20;
+
+        }
+
+
+        const maxLeft =
+            Math.max(
+                20,
+                document.documentElement.clientWidth -
+                width -
+                20
+            );
+
+
+        const maxTop =
+            Math.max(
+                20,
+                document.documentElement.clientHeight -
+                height -
+                20
+            );
+
+
+        left =
+            Math.max(
+                20,
+                Math.min(
+                    left,
+                    maxLeft
+                )
+            );
+
+
+        top =
+            Math.max(
+                20,
+                Math.min(
+                    top,
+                    maxTop
+                )
+            );
+
+
+        reject.style.left =
+            left + "px";
+
+        reject.style.top =
+            top + "px";
+
+    }
+);
+
+</script>
+
+</body>
+</html>
