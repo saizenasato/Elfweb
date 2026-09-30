@@ -1,1413 +1,1220 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Binayak's Elf Request</title>
-
-<style>
-
-/* =========================================
-   RESET
-========================================= */
-
-* {
-    box-sizing: border-box;
-}
-
-html,
-body {
-    margin: 0;
-    padding: 0;
-    min-height: 100%;
-}
-
-body {
-    font-family: Georgia, "Times New Roman", serif;
-    color: #f5f1df;
-
-    background:
-        radial-gradient(
-            circle at 50% 0%,
-            #285b38 0,
-            transparent 35%
-        ),
-        radial-gradient(
-            circle at 10% 80%,
-            #173923 0,
-            transparent 30%
-        ),
-        linear-gradient(
-            145deg,
-            #030b07,
-            #0b2415 55%,
-            #020a05
-        );
-
-    overflow-x: hidden;
-}
-
-
-/* =========================================
-   FIREFLIES
-========================================= */
-
-.firefly {
-    position: fixed;
-
-    width: 5px;
-    height: 5px;
-
-    border-radius: 50%;
-
-    background: #f6e59a;
-
-    box-shadow:
-        0 0 15px 5px #f6e59a88;
-
-    animation:
-        float 6s infinite ease-in-out;
-
-    pointer-events: none;
-}
-
-.f1 {
-    left: 10%;
-    top: 25%;
-}
-
-.f2 {
-    left: 25%;
-    top: 70%;
-    animation-delay: 1s;
-}
-
-.f3 {
-    left: 80%;
-    top: 20%;
-    animation-delay: 2s;
-}
-
-.f4 {
-    left: 90%;
-    top: 65%;
-    animation-delay: 3s;
-}
-
-.f5 {
-    left: 55%;
-    top: 85%;
-    animation-delay: 4s;
-}
-
-@keyframes float {
-
-    50% {
-        transform: translate(20px, -30px);
-        opacity: .4;
-    }
-
-}
-
-
-/* =========================================
-   MAIN CONTAINER
-========================================= */
-
-.container {
-    width: 92%;
-    max-width: 850px;
-
-    margin: auto;
-
-    padding:
-        35px
-        0
-        80px;
-}
-
-
-/* =========================================
-   HEADER
-========================================= */
-
-header {
-    text-align: center;
-
-    padding:
-        25px
-        10px;
-}
-
-.rune {
-    color: #f3d48a;
-
-    letter-spacing: 4px;
-
-    font-size: 13px;
-
-    text-transform: uppercase;
-}
-
-h1 {
-    font-size:
-        clamp(
-            45px,
-            12vw,
-            80px
-        );
-
-    margin:
-        12px
-        0
-        5px;
-
-    line-height: .95;
-}
-
-.name {
-    color: #f3d48a;
-
-    font-size: 23px;
-
-    margin-top: 12px;
-}
-
-.subtitle {
-    color: #8bd18e;
-
-    font-style: italic;
-
-    margin-top: 8px;
-
-    font-size: 17px;
-}
-
-.divider {
-    width: 180px;
-
-    height: 1px;
-
-    margin:
-        25px
-        auto;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            #f3d48a,
-            transparent
-        );
-}
-
-
-/* =========================================
-   CARDS
-========================================= */
-
-.card {
-    background:
-        rgba(
-            15,
-            40,
-            26,
-            .85
-        );
-
-    border:
-        1px solid
-        #a8d18b33;
-
-    border-radius: 24px;
-
-    padding: 27px;
-
-    margin: 18px 0;
-
-    box-shadow:
-        0 20px 60px #0008;
-
-    backdrop-filter:
-        blur(8px);
-}
-
-h2 {
-    color: #f3d48a;
-
-    margin-top: 0;
-
-    font-size: 25px;
-}
-
-
-/* =========================================
-   PROFILE
-========================================= */
-
-.grid {
-    display: grid;
-
-    grid-template-columns:
-        1fr
-        1fr;
-
-    gap: 14px;
-}
-
-.info {
-    background:
-        #ffffff08;
-
-    padding: 17px;
-
-    border-radius: 15px;
-
-    border:
-        1px solid
-        #ffffff08;
-}
-
-.info b {
-    display: block;
-
-    color: #8bd18e;
-
-    margin-bottom: 6px;
-}
-
-
-/* =========================================
-   QUALIFICATIONS
-========================================= */
-
-ul {
-    padding-left: 22px;
-}
-
-li {
-    margin:
-        10px
-        0;
-
-    line-height: 1.6;
-}
-
-
-/* =========================================
-   QUOTE
-========================================= */
-
-.quote {
-    text-align: center;
-
-    font-size: 21px;
-
-    line-height: 1.6;
-
-    color: #eee4c3;
-}
-
-.quote small {
-    display: block;
-
-    color: #829184;
-
-    font-size: 13px;
-
-    margin-top: 8px;
-}
-
-
-/* =========================================
-   FINAL QUESTION
-========================================= */
-
-.interview {
-    text-align: center;
-}
-
-
-/* =========================================
-   BUTTON AREA
-========================================= */
-
-.button-area {
-    position: relative;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    gap: 14px;
-
-    min-height: 110px;
-
-    margin-top: 25px;
-}
-
-
-/* =========================================
-   BUTTONS
-========================================= */
-
-#accept,
-#reject {
-    border-radius: 50px;
-
-    padding:
-        15px
-        27px;
-
-    font-family: inherit;
-
-    font-weight: bold;
-
-    font-size: 16px;
-
-    cursor: pointer;
-
-    user-select: none;
-
-    -webkit-user-select: none;
-
-    touch-action: manipulation;
-}
-
-
-/* =========================================
-   ACCEPT BUTTON
-========================================= */
-
-#accept {
-    position: relative;
-
-    z-index: 10;
-
-    border: none;
-
-    background:
-        linear-gradient(
-            135deg,
-            #b9e7a0,
-            #70b879
-        );
-
-    color: #09200e;
-
-    box-shadow:
-        0 8px 25px
-        #78c77a55;
-
-    transition:
-        transform .2s,
-        box-shadow .2s;
-}
-
-#accept:hover {
-    transform:
-        translateY(-3px);
-
-    box-shadow:
-        0 12px 30px
-        #78c77a88;
-}
-
-
-/* =========================================
-   REJECT BUTTON
-========================================= */
-
-#reject {
-    position: relative;
-
-    z-index: 9999;
-
-    border:
-        1px solid
-        #d77a7266;
-
-    background:
-        #35201e;
-
-    color:
-        #f5c7c0;
-
-    transition:
-        left .25s
-        cubic-bezier(.2, 1.5, .5, 1),
-
-        top .25s
-        cubic-bezier(.2, 1.5, .5, 1),
-
-        transform .25s;
-}
-
-
-/* =========================================
-   REJECT MESSAGE
-========================================= */
-
-#message {
-    min-height: 25px;
-
-    margin-top: 10px;
-
-    color: #9fd69b;
-
-    font-size: 14px;
-}
-
-
-/* =========================================
-   FOOTER
-========================================= */
-
-footer {
-    text-align: center;
-
-    color: #718272;
-
-    font-size: 12px;
-
-    margin-top: 30px;
-
-    line-height: 1.7;
-}
-
-
-/* =========================================
-   ACCEPT POPUP
-========================================= */
-
-#popup {
-    display: none;
-
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 10000;
-
-    background:
-        #020804dd;
-
-    align-items: center;
-
-    justify-content: center;
-
-    padding: 25px;
-}
-
-.popup-box {
-    width: 100%;
-
-    max-width: 500px;
-
-    background:
-        #10291a;
-
-    border:
-        1px solid
-        #b8d99c55;
-
-    border-radius: 28px;
-
-    padding: 35px;
-
-    text-align: center;
-
-    box-shadow:
-        0 25px 90px #000;
-}
-
-.popup-box .emoji {
-    font-size: 55px;
-
-    margin-bottom: 10px;
-}
-
-.popup-box h2 {
-    font-size: 30px;
-
-    color: #f3d48a;
-}
-
-.popup-box p {
-    line-height: 1.6;
-
-    font-size: 18px;
-}
-
-.close-button {
-    border: none;
-
-    border-radius: 30px;
-
-    padding:
-        13px
-        25px;
-
-    background:
-        #f3d48a;
-
-    color:
-        #211b0b;
-
-    font-family: inherit;
-
-    font-weight: bold;
-
-    cursor: pointer;
-
-    font-size: 15px;
-}
-
-
-/* =========================================
-   MOBILE
-========================================= */
-
-@media (max-width: 600px) {
-
-    .container {
-        width: 94%;
-
-        padding-top: 20px;
-    }
-
-    .grid {
-        grid-template-columns:
-            1fr;
-    }
-
-    .card {
-        padding: 22px;
-    }
-
-    h1 {
-        font-size: 54px;
-    }
-
-    .popup-box {
-        padding:
-            30px
-            22px;
-    }
-
-}
-
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Elf Request — Binayak → Nimisha</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Georgia, "Times New Roman", serif;
+            color: #eee8d5;
+            background:
+                radial-gradient(
+                    circle at 20% 10%,
+                    rgba(70, 130, 90, 0.18),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 80% 30%,
+                    rgba(30, 100, 65, 0.15),
+                    transparent 35%
+                ),
+                linear-gradient(
+                    135deg,
+                    #06130d,
+                    #0b281b 45%,
+                    #06130d
+                );
+            overflow-x: hidden;
+        }
+
+        /* =========================
+           FIREFLIES
+        ========================= */
+
+        .firefly {
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: #d8ff9d;
+            box-shadow: 0 0 12px #d8ff9d;
+            opacity: 0.7;
+            pointer-events: none;
+            animation: float 6s infinite ease-in-out;
+            z-index: 0;
+        }
+
+        .f1 {
+            top: 18%;
+            left: 12%;
+            animation-delay: 0s;
+        }
+
+        .f2 {
+            top: 35%;
+            left: 82%;
+            animation-delay: 1s;
+        }
+
+        .f3 {
+            top: 65%;
+            left: 18%;
+            animation-delay: 2s;
+        }
+
+        .f4 {
+            top: 78%;
+            left: 88%;
+            animation-delay: 3s;
+        }
+
+        .f5 {
+            top: 48%;
+            left: 52%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+                opacity: 0.25;
+            }
+
+            50% {
+                transform: translateY(-25px);
+                opacity: 0.9;
+            }
+        }
+
+        /* =========================
+           MAIN CONTAINER
+        ========================= */
+
+        .container {
+            position: relative;
+            z-index: 1;
+            width: min(900px, 92%);
+            margin: auto;
+            padding: 60px 0 120px;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .moon {
+            font-size: 48px;
+            margin-bottom: 12px;
+        }
+
+        .eyebrow {
+            color: #9bd69b;
+            letter-spacing: 4px;
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: clamp(42px, 10vw, 72px);
+            color: #f2e7c5;
+            text-shadow: 0 0 25px rgba(180, 230, 150, 0.15);
+        }
+
+        .subtitle {
+            margin-top: 15px;
+            color: #9ab79e;
+            font-size: 18px;
+        }
+
+        /* =========================
+           CARDS
+        ========================= */
+
+        .card {
+            position: relative;
+            margin: 28px 0;
+            padding: 38px;
+            border: 1px solid rgba(150, 210, 160, 0.22);
+            border-radius: 42px;
+            background: rgba(10, 40, 27, 0.78);
+            box-shadow:
+                0 20px 50px rgba(0, 0, 0, 0.18),
+                inset 0 0 40px rgba(100, 180, 120, 0.025);
+            backdrop-filter: blur(8px);
+        }
+
+        .card h2 {
+            margin-top: 0;
+            color: #f1dfaa;
+            font-size: 31px;
+        }
+
+        /* =========================
+           DETAILS
+        ========================= */
+
+        .details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .detail {
+            padding: 20px;
+            border-radius: 20px;
+            background: rgba(0, 0, 0, 0.12);
+        }
+
+        .detail-title {
+            color: #82c88d;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .detail-value {
+            font-size: 19px;
+            color: #eee8d5;
+        }
+
+        /* =========================
+           QUALIFICATIONS
+        ========================= */
+
+        .qualifications {
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .qualifications li {
+            margin: 16px 0;
+            font-size: 18px;
+            color: #d8dfce;
+        }
+
+        .qualifications li::before {
+            content: "✦";
+            color: #9bd69b;
+            margin-right: 12px;
+        }
+
+        /* =========================
+           QUOTE
+        ========================= */
+
+        .quote {
+            text-align: center;
+            padding: 48px 30px;
+        }
+
+        .quote-text {
+            font-size: clamp(25px, 5vw, 38px);
+            line-height: 1.4;
+            color: #eee4c7;
+        }
+
+        .quote-author {
+            margin-top: 22px;
+            color: #7e9a87;
+            font-size: 18px;
+        }
+
+        /* =========================
+           FINAL QUESTION
+        ========================= */
+
+        .final-question {
+            text-align: center;
+            overflow: visible;
+        }
+
+        .final-question h2 {
+            font-size: clamp(32px, 7vw, 48px);
+        }
+
+        .question {
+            font-size: 27px;
+            line-height: 1.35;
+            margin: 25px auto;
+            max-width: 700px;
+        }
+
+        .waiting {
+            color: #8ed39a;
+            font-size: 21px;
+            margin: 35px 0;
+        }
+
+        /* =========================
+           BUTTON AREA
+        ========================= */
+
+        .button-area {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 14px;
+            min-height: 110px;
+            margin-top: 10px;
+        }
+
+        button {
+            border: none;
+            cursor: pointer;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 22px;
+            font-weight: bold;
+            padding: 20px 48px;
+            border-radius: 50px;
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+            touch-action: manipulation;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        /* ACCEPT */
+
+        #accept {
+            color: #102316;
+            background: linear-gradient(
+                135deg,
+                #b6ed9c,
+                #77c57f
+            );
+
+            box-shadow:
+                0 0 25px rgba(130, 220, 130, 0.25),
+                0 10px 25px rgba(0, 0, 0, 0.2);
+
+            z-index: 2;
+        }
+
+        #accept:hover {
+            transform: scale(1.05);
+
+            box-shadow:
+                0 0 35px rgba(150, 240, 150, 0.4),
+                0 10px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        /* REJECT */
+
+        #reject {
+            color: #f2dada;
+
+            background: linear-gradient(
+                135deg,
+                #683b3b,
+                #402626
+            );
+
+            box-shadow:
+                0 8px 20px rgba(0, 0, 0, 0.3);
+
+            position: relative;
+            z-index: 9999;
+        }
+
+        /* =========================
+           MAGIC TEXT
+        ========================= */
+
+        .magic {
+            margin-top: 35px;
+            color: #93bd98;
+            font-size: 19px;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            color: rgba(200, 210, 190, 0.5);
+            font-size: 17px;
+            line-height: 1.8;
+        }
+
+        /* =========================
+           POPUP
+        ========================= */
+
+        .popup-overlay {
+            position: fixed;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: rgba(0, 15, 8, 0.82);
+            backdrop-filter: blur(10px);
+            z-index: 99999;
+        }
+
+        .popup {
+            width: min(550px, 100%);
+            padding: 45px 30px;
+            text-align: center;
+
+            border-radius: 35px;
+
+            border: 1px solid rgba(160, 220, 160, 0.3);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(18, 65, 39, 0.98),
+                    rgba(7, 30, 19, 0.98)
+                );
+
+            box-shadow:
+                0 30px 80px rgba(0, 0, 0, 0.55);
+        }
+
+        .popup h2 {
+            margin-top: 0;
+            color: #c9f1b0;
+            font-size: 38px;
+        }
+
+        .popup p {
+            color: #e7eadb;
+            font-size: 20px;
+            line-height: 1.6;
+        }
+
+        .close-popup {
+            margin-top: 20px;
+            color: #142317;
+            background: #a8dc91;
+            padding: 15px 30px;
+            font-size: 18px;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            .container {
+                width: 92%;
+                padding-top: 40px;
+            }
+
+            .card {
+                padding: 30px 20px;
+                border-radius: 35px;
+            }
+
+            .details {
+                grid-template-columns: 1fr;
+            }
+
+            .question {
+                font-size: 23px;
+            }
+
+            .button-area {
+                min-height: 125px;
+            }
+
+            button {
+                font-size: 20px;
+                padding: 18px 32px;
+            }
+
+            .quote-text {
+                font-size: 27px;
+            }
+        }
+    </style>
 </head>
-
 
 <body>
 
+    <!-- =========================
+         FIREFLIES
+    ========================= -->
 
-<!-- =========================================
-     FIREFLIES
-========================================= -->
-
-<div class="firefly f1"></div>
-<div class="firefly f2"></div>
-<div class="firefly f3"></div>
-<div class="firefly f4"></div>
-<div class="firefly f5"></div>
-
-
-<div class="container">
+    <div class="firefly f1"></div>
+    <div class="firefly f2"></div>
+    <div class="firefly f3"></div>
+    <div class="firefly f4"></div>
+    <div class="firefly f5"></div>
 
 
-<!-- =========================================
-     HEADER
-========================================= -->
+    <main class="container">
 
-<header>
+        <!-- =========================
+             HEADER
+        ========================= -->
 
-    <div class="rune">
-        ✦ A Woodland Request ✦
-    </div>
+        <header>
 
-    <h1>
-        ELF REQUEST
-    </h1>
+            <div class="moon">
+                🌙
+            </div>
 
-    <div class="name">
-        From: Binayak
-    </div>
+            <div class="eyebrow">
+                A SPECIAL REQUEST
+            </div>
 
-    <div class="subtitle">
-        A special request for Nimisha ✨
-    </div>
+            <h1>
+                ELF REQUEST
+            </h1>
 
-    <div class="divider"></div>
+            <div class="subtitle">
+                From: Binayak ✨
+            </div>
 
-</header>
+            <div class="subtitle">
+                A special request for Nimisha
+            </div>
+
+        </header>
 
 
-<!-- =========================================
-     REQUEST PROFILE
-========================================= -->
+        <!-- =========================
+             REQUEST DETAILS
+        ========================= -->
 
-<section class="card">
+        <section class="card">
 
-    <h2>
-        🌿 Request Details
-    </h2>
+            <h2>
+                🌿 Request Details
+            </h2>
 
-    <div class="grid">
+            <div class="details">
 
-        <div class="info">
-            <b>Applicant</b>
-            Binayak
+                <div class="detail">
+
+                    <div class="detail-title">
+                        Applicant
+                    </div>
+
+                    <div class="detail-value">
+                        Binayak 🧝‍♂️
+                    </div>
+
+                </div>
+
+
+                <div class="detail">
+
+                    <div class="detail-title">
+                        Requesting
+                    </div>
+
+                    <div class="detail-value">
+                        Nimisha 🧚‍♀️
+                    </div>
+
+                </div>
+
+
+                <div class="detail">
+
+                    <div class="detail-title">
+                        Requested Role
+                    </div>
+
+                    <div class="detail-value">
+                        Nimisha's Personal Elf
+                    </div>
+
+                </div>
+
+
+                <div class="detail">
+
+                    <div class="detail-title">
+                        Availability
+                    </div>
+
+                    <div class="detail-value">
+                        Whenever the fairy calls ✨
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             QUALIFICATIONS
+        ========================= -->
+
+        <section class="card">
+
+            <h2>
+                🧝‍♂️ Qualifications
+            </h2>
+
+            <ul class="qualifications">
+
+                <li>
+                    Professional fairy admirer
+                </li>
+
+                <li>
+                    Excellent forest navigation skills
+                </li>
+
+                <li>
+                    Can provide entertainment when required
+                </li>
+
+                <li>
+                    Available for random adventures
+                </li>
+
+                <li>
+                    Possesses questionable amounts of elf magic
+                </li>
+
+                <li>
+                    Applied entirely from boredom
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- =========================
+             QUOTE
+        ========================= -->
+
+        <section class="card quote">
+
+            <div class="quote-text">
+                "I saw a fairy and immediately
+                submitted my request."
+            </div>
+
+            <div class="quote-author">
+                — Binayak
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             FINAL QUESTION
+        ========================= -->
+
+        <section class="card final-question">
+
+            <h2>
+                🌙 One Final Question
+            </h2>
+
+            <div class="question">
+                Nimisha, would you accept Binayak's request?
+            </div>
+
+            <div class="waiting">
+                The Binayak awaits your answer. 🍀
+            </div>
+
+
+            <!-- BUTTONS -->
+
+            <div class="button-area">
+
+                <button id="accept">
+                    ✨ Accept
+                </button>
+
+                <button id="reject">
+                    Reject
+                </button>
+
+            </div>
+
+
+            <div class="magic">
+                ✨ Elf magic activated!
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             FOOTER
+        ========================= -->
+
+        <footer>
+
+            <div>
+                Made under the moonlight 🌙
+            </div>
+
+            <div>
+                A request from Binayak to Nimisha.
+            </div>
+
+        </footer>
+
+    </main>
+
+
+    <!-- =========================
+         ACCEPTANCE POPUP
+    ========================= -->
+
+    <div class="popup-overlay" id="popup">
+
+        <div class="popup">
+
+            <h2>
+                Thank You! 💚
+            </h2>
+
+            <p>
+                Thank you for accepting my request, Nimisha!
+            </p>
+
+            <p>
+                Your request has been accepted. 🌿
+            </p>
+
+            <p>
+                Your elf, Binayak, is ready to serve you.
+                🧝‍♂️✨
+            </p>
+
+            <button
+                class="close-popup"
+                id="closePopup"
+            >
+                Return to the Forest
+            </button>
+
         </div>
 
-        <div class="info">
-            <b>Requesting</b>
-            Nimisha ✨
-        </div>
-
-        <div class="info">
-            <b>Requested Role</b>
-            Nimisha's Personal Elf
-        </div>
-
-        <div class="info">
-            <b>Availability</b>
-            Whenever Nimisha needs me
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     QUALIFICATIONS
-========================================= -->
-
-<section class="card">
-
-    <h2>
-        🍃 Why Binayak?
-    </h2>
-
-    <ul>
-
-        <li>
-            Experienced in dealing with chaotic fairies.
-        </li>
-
-        <li>
-            Excellent reaction-emoji compatibility.
-        </li>
-
-        <li>
-            Professional good-vibes provider.
-        </li>
-
-        <li>
-            Can survive questionable fairy decisions.
-        </li>
-
-        <li>
-            Highly motivated to become Nimisha's elf.
-        </li>
-
-        <li>
-            Will protect the sacred woodland from boredom.
-        </li>
-
-    </ul>
-
-</section>
-
-
-<!-- =========================================
-     QUOTE
-========================================= -->
-
-<section class="card">
-
-    <div class="quote">
-
-        "I saw a fairy and immediately submitted my request."
-
-        <small>
-            — Binayak
-        </small>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     FINAL REQUEST
-========================================= -->
-
-<section class="card interview">
-
-    <h2>
-        🌙 One Final Question
-    </h2>
-
-    <p>
-
-        Nimisha, would you accept
-        Binayak's request?
-
-        <br><br>
-
-        <span style="color:#8bd18e">
-            The Binayak awaits your answer. 🌿
-        </span>
-
-    </p>
-
-
-    <div
-        class="button-area"
-        id="buttonArea"
-    >
-
-        <button
-            id="accept"
-            type="button"
-        >
-            ✨ Accept
-        </button>
-
-
-        <button
-            id="reject"
-            type="button"
-        >
-            🍂 Reject
-        </button>
-
     </div>
 
 
-    <div id="message"></div>
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
 
-</section>
+    <script>
 
+        const accept =
+            document.getElementById("accept");
 
-<footer>
+        const reject =
+            document.getElementById("reject");
 
-    Made under the moonlight 🌙
+        const popup =
+            document.getElementById("popup");
 
-    <br>
+        const closePopup =
+            document.getElementById("closePopup");
 
-    A request from Binayak to Nimisha.
 
-</footer>
+        let lastEscape = 0;
 
+        let rejectInteraction = false;
 
-</div>
 
+        /* =====================================
+           ACCEPT BUTTON
+        ===================================== */
 
-<!-- =========================================
-     ACCEPT POPUP
-========================================= -->
+        accept.addEventListener(
+            "pointerdown",
+            function(event) {
 
-<div id="popup">
+                if (rejectInteraction) {
 
-    <div class="popup-box">
+                    event.preventDefault();
 
-        <div class="emoji">
-            🧝‍♂️🌲✨
-        </div>
+                    event.stopPropagation();
 
+                    return;
+                }
 
-        <h2>
-            Thank You! 💚
-        </h2>
-
-
-        <p>
-            Thank you for accepting my request,
-            Nimisha!
-        </p>
-
-
-        <p style="color:#8bd18e">
-
-            Your request has been accepted. 🌿
-
-            <br><br>
-
-            Your elf, Binayak,
-            is ready to serve you. 🧝‍♂️✨
-
-        </p>
-
-
-        <button
-            class="close-button"
-            type="button"
-            onclick="closePopup()"
-        >
-            Return to the Forest
-        </button>
-
-    </div>
-
-</div>
-
-
-<script>
-
-/* =========================================
-   ELEMENTS
-========================================= */
-
-const reject =
-    document.getElementById("reject");
-
-const accept =
-    document.getElementById("accept");
-
-const message =
-    document.getElementById("message");
-
-const popup =
-    document.getElementById("popup");
-
-
-/* =========================================
-   ESCAPE STATE
-========================================= */
-
-let lastEscape = 0;
-
-let rejectInteraction = false;
-
-
-/* =========================================
-   RUN AWAY
-========================================= */
-
-function runAway(event) {
-
-    /*
-       Stop the original touch/click
-       from travelling through the page.
-    */
-
-    if (event) {
-
-        event.preventDefault();
-
-        event.stopPropagation();
-
-    }
-
-
-    rejectInteraction = true;
-
-
-    const now = Date.now();
-
-
-    /*
-       Prevent duplicate pointer/click events.
-    */
-
-    if (
-        now - lastEscape < 150
-    ) {
-        return;
-    }
-
-
-    lastEscape = now;
-
-
-    /* -------------------------------------
-       VISIBLE VIEWPORT
-    ------------------------------------- */
-
-    const viewportWidth =
-        document.documentElement.clientWidth;
-
-    const viewportHeight =
-        document.documentElement.clientHeight;
-
-
-    /* -------------------------------------
-       BUTTON SIZE
-    ------------------------------------- */
-
-    const buttonWidth =
-        reject.offsetWidth;
-
-    const buttonHeight =
-        reject.offsetHeight;
-
-
-    const padding = 20;
-
-
-    /* -------------------------------------
-       MAXIMUM SAFE POSITION
-    ------------------------------------- */
-
-    const maxX =
-        Math.max(
-            padding,
-            viewportWidth -
-            buttonWidth -
-            padding
+            }
         );
 
 
-    const maxY =
-        Math.max(
-            padding,
-            viewportHeight -
-            buttonHeight -
-            padding
+        accept.addEventListener(
+            "click",
+            function(event) {
+
+                if (rejectInteraction) {
+
+                    event.preventDefault();
+
+                    event.stopPropagation();
+
+                    return;
+                }
+
+                popup.style.display = "flex";
+
+            }
         );
 
 
-    /* -------------------------------------
-       OLD POSITION
-    ------------------------------------- */
+        /* =====================================
+           REJECT BUTTON
+        ===================================== */
 
-    const oldX =
-        parseFloat(
-            reject.style.left
-        );
+        function runAway(event) {
 
-    const oldY =
-        parseFloat(
-            reject.style.top
-        );
+            if (event) {
 
+                event.preventDefault();
 
-    let randomX = padding;
+                event.stopPropagation();
 
-    let randomY = padding;
+            }
 
 
-    /* -------------------------------------
-       FIND A DIFFERENT POSITION
-    ------------------------------------- */
+            const now = Date.now();
 
-    for (
-        let i = 0;
-        i < 15;
-        i++
-    ) {
 
-        randomX =
-            padding +
-            Math.random() *
-            Math.max(
-                0,
-                maxX - padding
+            /*
+             * Prevent multiple triggers
+             * happening almost simultaneously.
+             */
+
+            if (now - lastEscape < 180) {
+
+                return;
+
+            }
+
+
+            lastEscape = now;
+
+            rejectInteraction = true;
+
+
+            const btn = reject;
+
+
+            /*
+             * Change the button from its original
+             * side-by-side position to fixed.
+             */
+
+            btn.style.position = "fixed";
+
+
+            const padding = 20;
+
+
+            const btnWidth =
+                btn.offsetWidth;
+
+            const btnHeight =
+                btn.offsetHeight;
+
+
+            const viewportWidth =
+                window.innerWidth;
+
+            const viewportHeight =
+                window.innerHeight;
+
+
+            /*
+             * IMPORTANT:
+             *
+             * Reserve the bottom part of the screen.
+             *
+             * This prevents the Reject button from
+             * hiding underneath the Netlify badge.
+             *
+             * The badge in your screenshot is near
+             * the bottom-right area.
+             */
+
+            const bottomSafeArea = 170;
+
+
+            /*
+             * Calculate the usable screen area.
+             */
+
+            const maxX =
+                Math.max(
+                    padding,
+                    viewportWidth -
+                    btnWidth -
+                    padding
+                );
+
+
+            const maxY =
+                Math.max(
+                    padding,
+                    viewportHeight -
+                    btnHeight -
+                    bottomSafeArea
+                );
+
+
+            let x;
+
+            let y;
+
+            let attempts = 0;
+
+
+            /*
+             * Find a random location.
+             *
+             * Keep trying if the new location is
+             * too close to the previous location.
+             */
+
+            do {
+
+                x =
+                    padding +
+                    Math.random() *
+                    Math.max(
+                        1,
+                        maxX - padding
+                    );
+
+
+                y =
+                    padding +
+                    Math.random() *
+                    Math.max(
+                        1,
+                        maxY - padding
+                    );
+
+
+                attempts++;
+
+
+            } while (
+
+                Math.abs(
+                    x - btn.offsetLeft
+                ) < 80 &&
+
+                Math.abs(
+                    y - btn.offsetTop
+                ) < 80 &&
+
+                attempts < 100
+
             );
 
 
-        randomY =
-            padding +
-            Math.random() *
-            Math.max(
-                0,
-                maxY - padding
+            /*
+             * Move button.
+             */
+
+            btn.style.left =
+                `${x}px`;
+
+            btn.style.top =
+                `${y}px`;
+
+
+            /*
+             * Give it a random rotation.
+             */
+
+            btn.style.transform =
+                `rotate(${Math.random() * 20 - 10}deg)`;
+
+
+            /*
+             * Change its message.
+             */
+
+            const messages = [
+
+                "Nice try! 😏",
+
+                "Too slow! 🧝‍♂️",
+
+                "Nope! 🌿",
+
+                "Catch me first! ✨",
+
+                "The forest protects me! 🌲",
+
+                "You can't catch me! 😂",
+
+                "Almost! 👀",
+
+                "Try again! 🍃"
+
+            ];
+
+
+            btn.textContent =
+                messages[
+                    Math.floor(
+                        Math.random() *
+                        messages.length
+                    )
+                ];
+
+
+            /*
+             * Android can sometimes generate a delayed
+             * synthetic click after a touch.
+             *
+             * Keep Accept protected for a short time.
+             */
+
+            setTimeout(
+                function() {
+
+                    rejectInteraction = false;
+
+                },
+                300
             );
-
-
-        if (
-            !Number.isFinite(oldX) ||
-            !Number.isFinite(oldY)
-        ) {
-
-            break;
 
         }
 
 
-        const distance =
-            Math.hypot(
-                randomX - oldX,
-                randomY - oldY
-            );
+        /* =====================================
+           MOBILE / TOUCH
+        ===================================== */
+
+        reject.addEventListener(
+            "pointerdown",
+            runAway,
+            {
+                passive: false
+            }
+        );
 
 
-        if (
-            distance >
-            Math.min(
-                viewportWidth,
-                viewportHeight
-            ) * 0.25
-        ) {
+        /* =====================================
+           DESKTOP / MOUSE
+        ===================================== */
 
-            break;
-
-        }
-
-    }
+        reject.addEventListener(
+            "mouseenter",
+            runAway
+        );
 
 
-    /* -------------------------------------
-       MOVE REJECT
-    ------------------------------------- */
+        /* =====================================
+           PREVENT REJECT CLICK
+        ===================================== */
 
-    reject.style.position =
-        "fixed";
+        reject.addEventListener(
+            "click",
+            function(event) {
 
-    reject.style.left =
-        randomX + "px";
+                event.preventDefault();
 
-    reject.style.top =
-        randomY + "px";
-
-
-    /* -------------------------------------
-       RANDOM ROTATION
-    ------------------------------------- */
-
-    const rotation =
-        Math.random() * 24 - 12;
-
-    reject.style.transform =
-        `rotate(${rotation}deg)`;
-
-
-    /* -------------------------------------
-       RANDOM MESSAGE
-    ------------------------------------- */
-
-    const messages = [
-
-        "🍃 NOPE!",
-
-        "🌲 Catch me!",
-
-        "🧝 Too fast!",
-
-        "✨ Fairy magic!",
-
-        "🍂 Try again!",
-
-        "🌿 Almost!",
-
-        "😂 Nice try!",
-
-        "🌳 haha wood protected me!",
-
-        "🏃💨 BYE!",
-
-        "🌳 I'm over here!",
-
-        "🍄 You can't catch me!",
-
-        "✨ Elf magic activated!",
-
-        "🌲 The forest says NO!",
-
-        "🧝 Not today!"
-
-    ];
-
-
-    message.textContent =
-        messages[
-            Math.floor(
-                Math.random() *
-                messages.length
-            )
-        ];
-
-
-    /*
-       Keep Android's delayed/synthetic
-       click from activating Accept.
-    */
-
-    setTimeout(
-        function() {
-
-            rejectInteraction = false;
-
-        },
-        500
-    );
-
-}
-
-
-/* =========================================
-   REJECT — TOUCH / POINTER
-========================================= */
-
-reject.addEventListener(
-    "pointerdown",
-    runAway,
-    true
-);
-
-
-/* =========================================
-   REJECT — DESKTOP MOUSE
-========================================= */
-
-reject.addEventListener(
-    "mouseenter",
-    function(event) {
-
-        runAway(event);
-
-    }
-);
-
-
-/* =========================================
-   REJECT — CLICK
-========================================= */
-
-reject.addEventListener(
-    "click",
-    function(event) {
-
-        event.preventDefault();
-
-        event.stopPropagation();
-
-        rejectInteraction = true;
-
-
-        const now = Date.now();
-
-
-        if (
-            now - lastEscape >= 150
-        ) {
-
-            runAway(event);
-
-        }
-
-
-        setTimeout(
-            function() {
-
-                rejectInteraction = false;
+                event.stopPropagation();
 
             },
-            500
+            true
         );
 
-    },
-    true
-);
 
+        /* =====================================
+           EXTRA ANDROID PROTECTION
+        ===================================== */
 
-/* =========================================
-   ACCEPT
-========================================= */
+        document.addEventListener(
+            "click",
+            function(event) {
 
-accept.addEventListener(
-    "click",
-    function(event) {
+                if (rejectInteraction) {
 
-        /*
-           Ignore accidental clicks caused
-           by the Reject button escaping.
-        */
+                    event.preventDefault();
 
-        if (
-            rejectInteraction ||
-            Date.now() - lastEscape < 500
-        ) {
+                    event.stopPropagation();
 
-            event.preventDefault();
+                }
 
-            event.stopPropagation();
+            },
+            true
+        );
 
-            return;
 
-        }
+        /* =====================================
+           KEEP REJECT INSIDE SAFE AREA
+           AFTER SCREEN ROTATION / RESIZE
+        ===================================== */
 
+        window.addEventListener(
+            "resize",
+            function() {
 
-        /*
-           Genuine Accept action.
-        */
+                /*
+                 * If the Reject button hasn't escaped yet,
+                 * leave it in its original side-by-side
+                 * position.
+                 */
 
-        popup.style.display =
-            "flex";
+                if (
+                    reject.style.position !==
+                    "fixed"
+                ) {
 
-    }
-);
+                    return;
 
+                }
 
-/* =========================================
-   ACCEPT POINTER PROTECTION
-========================================= */
 
-accept.addEventListener(
-    "pointerdown",
-    function(event) {
+                const padding = 20;
 
-        if (
-            rejectInteraction ||
-            Date.now() - lastEscape < 500
-        ) {
+                const bottomSafeArea = 170;
 
-            event.preventDefault();
 
-            event.stopPropagation();
+                const btnWidth =
+                    reject.offsetWidth;
 
-        }
+                const btnHeight =
+                    reject.offsetHeight;
 
-    },
-    true
-);
 
+                const maxX =
+                    Math.max(
+                        padding,
+                        window.innerWidth -
+                        btnWidth -
+                        padding
+                    );
 
-/* =========================================
-   GLOBAL CLICK PROTECTION
-========================================= */
 
-document.addEventListener(
-    "click",
-    function(event) {
+                const maxY =
+                    Math.max(
+                        padding,
+                        window.innerHeight -
+                        btnHeight -
+                        bottomSafeArea
+                    );
 
-        if (
-            rejectInteraction &&
-            event.target === accept
-        ) {
 
-            event.preventDefault();
+                let currentX =
+                    parseFloat(
+                        reject.style.left
+                    ) || padding;
 
-            event.stopPropagation();
 
-        }
+                let currentY =
+                    parseFloat(
+                        reject.style.top
+                    ) || padding;
 
-    },
-    true
-);
 
+                /*
+                 * Clamp X.
+                 */
 
-/* =========================================
-   CLOSE POPUP
-========================================= */
+                currentX =
+                    Math.max(
+                        padding,
+                        Math.min(
+                            currentX,
+                            maxX
+                        )
+                    );
 
-function closePopup() {
 
-    popup.style.display =
-        "none";
+                /*
+                 * Clamp Y.
+                 */
 
-}
+                currentY =
+                    Math.max(
+                        padding,
+                        Math.min(
+                            currentY,
+                            maxY
+                        )
+                    );
 
 
-/* =========================================
-   KEEP REJECT ON SCREEN
-========================================= */
+                reject.style.left =
+                    `${currentX}px`;
 
-window.addEventListener(
-    "resize",
-    function() {
 
-        if (
-            reject.style.position !== "fixed"
-        ) {
+                reject.style.top =
+                    `${currentY}px`;
 
-            return;
+            }
+        );
 
-        }
 
+        /* =====================================
+           CLOSE POPUP
+        ===================================== */
 
-        const width =
-            reject.offsetWidth;
+        closePopup.addEventListener(
+            "click",
+            function() {
 
-        const height =
-            reject.offsetHeight;
+                popup.style.display = "none";
 
+            }
+        );
 
-        let left =
-            parseFloat(
-                reject.style.left
-            );
 
-        let top =
-            parseFloat(
-                reject.style.top
-            );
+        /* =====================================
+           CLOSE POPUP BY TAPPING BACKGROUND
+        ===================================== */
 
+        popup.addEventListener(
+            "click",
+            function(event) {
 
-        if (
-            Number.isNaN(left)
-        ) {
+                if (
+                    event.target === popup
+                ) {
 
-            left = 20;
+                    popup.style.display =
+                        "none";
 
-        }
+                }
 
+            }
+        );
 
-        if (
-            Number.isNaN(top)
-        ) {
-
-            top = 20;
-
-        }
-
-
-        const maxLeft =
-            Math.max(
-                20,
-                document.documentElement.clientWidth -
-                width -
-                20
-            );
-
-
-        const maxTop =
-            Math.max(
-                20,
-                document.documentElement.clientHeight -
-                height -
-                20
-            );
-
-
-        left =
-            Math.max(
-                20,
-                Math.min(
-                    left,
-                    maxLeft
-                )
-            );
-
-
-        top =
-            Math.max(
-                20,
-                Math.min(
-                    top,
-                    maxTop
-                )
-            );
-
-
-        reject.style.left =
-            left + "px";
-
-        reject.style.top =
-            top + "px";
-
-    }
-);
-
-</script>
+    </script>
 
 </body>
 </html>
